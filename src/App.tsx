@@ -10,7 +10,7 @@ import { Modal, Toaster, toast } from './ui';
 import { ProjectMeta, deleteProject, listProjects, loadCustomFixtures, loadProject, saveCustomFixtures, saveProject } from './lib/storage';
 import { exportGafferFile, exportProjectPdf, exportScenePng } from './lib/export';
 import { migrate } from './lib/migrate';
-import { APP_VERSION, desktop, pickFile } from './lib/platform';
+import { APP_VERSION, desktop, isAndroid, pickFile } from './lib/platform';
 import { TEMPLATES } from './templates';
 import { UpdateBanner } from './Update';
 
@@ -22,6 +22,23 @@ export default function App() {
   // Abrir un .gaffer con doble clic (escritorio).
   useEffect(() => {
     desktop?.onOpenFile((_name, text) => importText(text).catch(e => alert(e.message)));
+  }, []);
+
+  // Botón "atrás" de Android: cierra el panel, luego vuelve a Mis proyectos, luego sale.
+  useEffect(() => {
+    if (!isAndroid) return;
+    let remove = () => {};
+    import('@capacitor/app').then(({ App: CapApp }) => {
+      CapApp.addListener('backButton', async () => {
+        const s = useStore.getState();
+        if (document.querySelector('.modal-back')) return;
+        if (s.panel) s.setPanel(null);
+        else if (s.selectedId) s.select(null);
+        else if (s.project) { await saveProject(s.project); s.close(); }
+        else CapApp.exitApp();
+      }).then(h => { remove = () => h.remove(); });
+    });
+    return () => remove();
   }, []);
 
   return <>
