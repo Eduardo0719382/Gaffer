@@ -1,0 +1,6 @@
+{
+  "appId": "io.github.eduardo0719382.gaffer",
+  "appName": "Gaffer",
+  "webDir": "dist",
+  "android": { "allowMixedContent": false }
+}
