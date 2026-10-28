@@ -207,7 +207,9 @@ h4 { margin: 18px 0 8px; font-size: 14px; text-transform: uppercase; letter-spac
   .side.left, .side.right { display: none; }
   .hide-sm { display: none; }
   .sm-only { display: inline-block; }
-  .proj-name { max-width: 40vw; }
+  .proj-name { flex: 1; min-width: 0; max-width: none; }
+  .topbar .spacer { display: none; }
+  .topbar .icon-btn { min-width: 38px; }
   .save-state { display: none; }
   .bottom-nav {
     display: flex; background: var(--top); padding-bottom: env(safe-area-inset-bottom);
