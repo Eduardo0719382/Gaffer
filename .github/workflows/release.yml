@@ -76,7 +76,7 @@ jobs:
         run: |
           echo "::warning::No hay llave de firma Android en GitHub Secrets; esta versión sale sin APK."
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleDebug --no-daemon || { echo "::error::Android no compila; ver workflow Check"; exit 1; }
       - name: Compilar APK firmado
         if: env.HAS_KEY == 'true'
         working-directory: android

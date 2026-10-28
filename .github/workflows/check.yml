@@ -1,0 +1,36 @@
+# Comprueba en cada push que la web y Android compilan (no publica nada).
+name: Check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - run: npm run build
+      - run: npx cap sync android
+      - name: Compilar APK de prueba
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          set +e
+          ./gradlew assembleDebug --no-daemon > gradle.log 2>&1
+          code=$?
+          if [ $code -ne 0 ]; then
+            grep -E -A6 "What went wrong|error:|e: " gradle.log | head -30 | while IFS= read -r l; do echo "::error::$l"; done
+            tail -40 gradle.log
+          fi
+          exit $code
