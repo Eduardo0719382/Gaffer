@@ -13,8 +13,8 @@ Cada sesión: leer primero, actualizar al final.
 | Exportar PNG / PDF | Hecho | — |
 | Carga eléctrica, gear list, plantillas | Hecho | — |
 | Instalador Windows (verificado local) | Hecho | — |
-| CI de releases (Win/mac/Linux/Android) | En curso | — |
-| Auto-update escritorio probado de punta a punta | Pendiente | Necesita 2 releases |
+| CI de releases (Win/mac/Linux) + check Android en cada push | Hecho | — |
+| Auto-update Windows probado 0.1.0 → 0.1.1 | Hecho | — |
 | APK firmado en el Release | Bloqueado | Usuario debe cargar 4 Secrets en GitHub |
 | Prueba en Android real (instalar, crear, exportar, actualizar) | Bloqueado | Teléfono del usuario |
 | Prueba con el gaffer (papá) sin ayuda | Pendiente | Usuario |
