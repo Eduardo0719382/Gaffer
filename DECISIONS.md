@@ -99,3 +99,17 @@ GitHub Release; la app consulta ese Release para actualizarse.
 - Los nombres de modelos aparecen solo como texto descriptivo.
 - Íconos genéricos dibujados por nosotros (COB, fresnel, panel, tubo, HMI, práctico).
 - Ningún asset de Sidus/Aputure ni de otra marca.
+
+## D8 — Descubrimientos durante la construcción
+- **Build local en Windows:** electron-builder falla en dos casos:
+  - Al extraer `winCodeSign` sin permiso de symlinks (falta Modo desarrollador).
+  - Con rutas de más de 260 caracteres (NSIS).
+  - Arreglo local: `subst X: <carpeta>` + `-c.win.signAndEditExecutable=false`.
+    En CI (windows-latest) no hace falta.
+- **Konva mide un `Wedge` como el círculo completo.** Para encuadrar y exportar se calculan
+  los límites a mano: objetos, abanico del haz y etiquetas.
+- **Etiquetas:** 0.2 m, pero nunca menos de 11 px en pantalla. Si no, no se leen al alejar.
+- **PDF:** el diagrama va en JPEG. En PNG un proyecto de 1 escena pesaba 17 MB; con JPEG,
+  5 escenas pesan 1.5 MB.
+- **Exportación:** las esperas de dibujo usan setTimeout como respaldo de
+  requestAnimationFrame, que se detiene si la ventana está oculta.

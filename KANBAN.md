@@ -5,15 +5,17 @@ Cada sesión: leer primero, actualizar al final.
 | Tarea | Estado | Bloqueo |
 |---|---|---|
 | Discovery y decisiones de stack | Hecho | — |
-| Modelo de datos + canvas (zoom, pan, snap, rotar) | En curso | — |
-| Librería de equipos multimarca + personalizados | Pendiente | — |
-| Propiedades por luz (CCT, intensidad, gel, difusión, circuito) | Pendiente | — |
-| Escenas múltiples + capas + deshacer/rehacer | Pendiente | — |
-| Guardar/abrir (IndexedDB) + importar/exportar .gaffer | Pendiente | — |
-| Exportar PNG / PDF | Pendiente | — |
-| Carga eléctrica, gear list, plantillas | Pendiente | — |
-| Electron + instalador Windows/mac/Linux | Pendiente | — |
-| Android (Capacitor) + firma | Pendiente | Secrets de firma en GitHub |
-| CI de releases + auto-update | Pendiente | — |
-| README para gaffers | Pendiente | — |
-| Prueba en Android real | Pendiente | Requiere teléfono del usuario |
+| Modelo de datos + canvas (zoom, pan, pellizco, imán, rotar) | Hecho | — |
+| Librería multimarca + equipos personalizados | Hecho | — |
+| Propiedades por luz (CCT, intensidad, gel, difusión, circuito, notas) | Hecho | — |
+| Escenas múltiples, vista de todas, capas, deshacer/rehacer | Hecho | — |
+| Guardar/abrir (IndexedDB) + importar/exportar .gaffer | Hecho | — |
+| Exportar PNG / PDF | Hecho | — |
+| Carga eléctrica, gear list, plantillas | Hecho | — |
+| Instalador Windows (verificado local) | Hecho | — |
+| CI de releases (Win/mac/Linux/Android) | En curso | — |
+| Auto-update escritorio probado de punta a punta | Pendiente | Necesita 2 releases |
+| APK firmado en el Release | Bloqueado | Usuario debe cargar 4 Secrets en GitHub |
+| Prueba en Android real (instalar, crear, exportar, actualizar) | Bloqueado | Teléfono del usuario |
+| Prueba con el gaffer (papá) sin ayuda | Pendiente | Usuario |
+| Ideas: agrupar luz+modificador, foto de locación de fondo, modo oscuro, inglés | Backlog | — |
