@@ -2,7 +2,6 @@
 import { Capacitor } from '@capacitor/core';
 
 export interface DesktopBridge {
-  version: string;
   platform: string;
   onUpdate(cb: (ev: { type: string; version?: string; percent?: number; message?: string }) => void): void;
   checkUpdates(): void;
