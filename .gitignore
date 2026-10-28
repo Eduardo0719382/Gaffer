@@ -1,0 +1,15 @@
+node_modules/
+dist/
+release/
+*.log
+.DS_Store
+# Nunca subir llaves de firma
+*.jks
+*.keystore
+*.p12
+keystore.properties
+android/app/release/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
